@@ -93,6 +93,13 @@
 .dsec{margin-top:18px}.dsech{display:flex;align-items:center;gap:8px;border-bottom:2px solid var(--c);padding-bottom:8px;margin-bottom:8px}.dsech b{background:var(--c);color:#fff;font-size:14px;padding:5px 12px;border-radius:4px}.dsech span{font-size:12px;color:#888}
 .dco{display:flex;align-items:center;gap:8px;margin:12px 2px 8px;font-size:12px;color:#999}.dco img{display:block}
 .dempty{display:flex;align-items:center;gap:10px;border:1px dashed #d9d9d9;border-radius:6px;background:#fff;padding:7px 12px;margin:6px 0;font-size:12px;color:#aaa}
+.pastbtn{margin-left:auto;border:1px solid #EF4122;background:#fff;color:#EF4122;font-family:'Pretendard Variable',Pretendard,-apple-system,BlinkMacSystemFont,'Apple SD Gothic Neo','Noto Sans KR','Malgun Gothic',sans-serif;font-size:12px;font-weight:700;border-radius:14px;padding:4px 12px;cursor:pointer;white-space:nowrap}.pastbtn:hover{background:#EF4122;color:#fff}
+.pastbox{border:1px solid #f3c9bf;background:#fff8f6;border-radius:8px;padding:10px 12px 4px;margin:6px 0 10px}
+.pasth{display:flex;align-items:center;gap:8px;margin-bottom:8px;font-size:12px;color:#888}.pasth b{font-family:'Pretendard Variable',Pretendard,-apple-system,BlinkMacSystemFont,'Apple SD Gothic Neo','Noto Sans KR','Malgun Gothic',sans-serif;font-size:13px;color:#EF4122}
+.pastclose{margin-left:auto;border:1px solid #ddd;background:#fff;color:#666;font-size:12px;border-radius:14px;padding:3px 11px;cursor:pointer}
+.pastd{font-family:'Pretendard Variable',Pretendard,-apple-system,BlinkMacSystemFont,'Apple SD Gothic Neo','Noto Sans KR','Malgun Gothic',sans-serif;font-size:12px;font-weight:700;color:#666;margin:4px 2px 6px}
+.pastnone{font-size:13px;color:#777;padding:6px 2px 10px}.pastnone a{color:#EF4122;font-weight:700;text-decoration:none;margin-left:4px}
+.pastmore{display:block;margin:0 0 8px auto;border:0;background:none;color:#EF4122;font-size:12px;font-weight:700;cursor:pointer}
 .bcard{display:grid;grid-template-columns:120px 1fr;gap:14px;background:#fff;border:1px solid #e6e6e6;border-radius:8px;padding:10px;margin-bottom:10px}
 .bcard .bimg{display:block;width:120px;height:120px;border-radius:6px;overflow:hidden;background:#f3f3f3}.bcard .bimg img{width:100%;height:100%;object-fit:cover;display:block}
 .bcard .bimg .lg{width:100%;height:100%;display:flex;align-items:center;justify-content:center}.bcard .bimg .lg img{width:auto;height:auto;max-width:90px;max-height:40px;object-fit:contain}
@@ -662,13 +669,27 @@ mark{background:#ffe08a;color:inherit;padding:0 1px;border-radius:2px}
     (d.sections||[]).forEach(function(s){
       h+='<div class="dsec" style="--c:'+(SC[s.key]||'#555')+'"><div class="dsech"><b>'+esc(s.title)+'</b><span>'+secCnt(s)+'건</span></div>';
       (s.companies||[]).forEach(function(c){
-        if(!(c.items||[]).length){h+='<div class="dempty">'+logo(c.name,18)+'<span>특이 기사 없음</span></div>';return}
+        if(!(c.items||[]).length){h+='<div class="dempty" data-co="'+esc(c.name)+'" data-key="'+s.key+'">'+logo(c.name,18)+'<span>특이 기사 없음</span><button type="button" class="pastbtn">과거 최신기사 보기</button></div>';return}
         h+='<div class="dco">'+logo(c.name,24)+'<span>'+c.items.length+'건</span></div>';
         c.items.forEach(function(it){h+=card(it,c.name,s.key,false)});
       });
       h+='</div>';
     });
     main.innerHTML=h;
+    bindPast(d.date);
+  }
+  var NQ={'대동':'대동 트랙터','KIOTI':'카이오티','TYM':'TYM 트랙터','LS엠트론':'LS엠트론 트랙터','긴트':'긴트 자율주행'};
+  function pastItems(co,before){var out=[];dates.forEach(function(dt){if(dt>=before)return;var d=byDate[dt];(d.sections||[]).forEach(function(s){(s.companies||[]).forEach(function(c){if(c.name!==co)return;(c.items||[]).forEach(function(it){out.push({it:it,key:s.key,date:dt,label:d.dateLabel||dt})})})})});return out}
+  function searchLink(co,key){var q=NQ[co];if(q)return 'https://search.naver.com/search.naver?where=news&sort=1&query='+encodeURIComponent(q);return 'https://news.google.com/search?q='+encodeURIComponent(({'Bad Boy':'Bad Boy Mowers','Mahindra':'Mahindra tractor','New Holland':'New Holland Agriculture','AGCO':'AGCO Fendt Massey Ferguson','Kubota':'Kubota tractor','Yanmar':'Yanmar tractor'})[co]||co)+'&hl=en-US&gl=US&ceid=US:en'}
+  function bindPast(cur){[].forEach.call(main.querySelectorAll('.dempty[data-co]'),function(row){var b=row.querySelector('.pastbtn');if(!b)return;b.addEventListener('click',function(){showPast(row,cur)})})}
+  function showPast(row,cur){var co=row.getAttribute('data-co'),key=row.getAttribute('data-key'),all=pastItems(co,cur),list=all.slice(0,3);
+    var box=document.createElement('div');box.className='pastbox';
+    var h='<div class="pasth">'+logo(co,18)+'<b>과거 최신기사</b><span>'+(all.length?'최근 '+list.length+'건 · 전체 '+all.length+'건 기록':'저장된 과거 기사 없음')+'</span><button type="button" class="pastclose">닫기</button></div>';
+    if(list.length){var last='';list.forEach(function(r){if(r.date!==last){h+='<div class="pastd">'+esc(r.label)+'</div>';last=r.date}h+=card(r.it,co,r.key,false)});if(all.length>3)h+='<button type="button" class="pastmore">이 회사 기사 전체 검색 &rarr;</button>'}
+    else h+='<div class="pastnone">브리핑 기록에 이 회사 기사가 아직 없어요. <a href="'+searchLink(co,key)+'" target="_blank" rel="noopener">'+(NQ[co]?'네이버 뉴스':'Google 뉴스')+'에서 최신 기사 보기 &#8599;</a></div>';
+    box.innerHTML=h;row.parentNode.replaceChild(box,row);
+    box.querySelector('.pastclose').addEventListener('click',function(){box.parentNode.replaceChild(row,box)});
+    var more=box.querySelector('.pastmore');if(more)more.addEventListener('click',function(){qi.value=co;q=co;qx.style.display='block';searchView();window.scrollTo(0,0)});
   }
   function searchView(){
     var t=terms(),groups=[],total=0;
