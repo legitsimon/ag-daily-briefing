@@ -9,20 +9,21 @@
 .dhero h2,.hero h1{letter-spacing:-0.02em;font-weight:800}.btitle,.title{letter-spacing:-0.01em}.tab{letter-spacing:-0.01em}
 *{box-sizing:border-box} body{margin:0;background:#f2f2f2;font-family:'Noto Sans KR','Malgun Gothic','맑은 고딕','Apple SD Gothic Neo',Arial,sans-serif;color:#222}
 .tabbar{position:sticky;top:0;z-index:20;background:#fff;border-bottom:1px solid #e3e3e3;box-shadow:0 1px 4px rgba(0,0,0,.04)}
-.tabbar .in{max-width:1000px;margin:0 auto;display:flex;align-items:center;gap:8px;padding:0 20px;height:62px}
+.tabbar .in{max-width:1000px;margin:0 auto;display:flex;align-items:center;gap:8px;padding:0 20px;height:72px}
+.tabbar,.tabbar *{font-family:'Pretendard Variable',Pretendard,-apple-system,BlinkMacSystemFont,'Apple SD Gothic Neo','Noto Sans KR','Malgun Gothic',sans-serif}
 .tabbar .brand{display:flex;align-items:center;gap:10px;margin-right:auto}
-.tabbar .brand img{height:22px}.tabbar .brand span{font-weight:700;font-size:14px;color:#221E1F;border-left:1px solid #ddd;padding-left:10px}
-.tab{appearance:none;border:0;font-family:inherit;font-size:14px;font-weight:700;padding:0 16px;height:38px;border-radius:8px;cursor:pointer;background:#0B1F3A;color:rgba(255,255,255,.72);transition:background .15s,color .15s,box-shadow .15s}
+.tabbar .brand{gap:14px}.tabbar .brand img{height:32px}.tabbar .brand span{font-weight:800;font-size:19px;letter-spacing:-0.02em;color:#221E1F;border-left:1px solid #ddd;padding-left:14px;line-height:28px}
+.tab{appearance:none;border:0;font-family:inherit;font-size:15px;font-weight:700;padding:0 18px;height:42px;border-radius:8px;cursor:pointer;background:#0B1F3A;color:rgba(255,255,255,.72);transition:background .15s,color .15s,box-shadow .15s}
 .tab:hover{color:#fff;background:#13294b}
 .tab .n{display:inline-block;margin-left:8px;font-size:12px;background:rgba(255,255,255,.16);color:#fff;border-radius:10px;padding:1px 8px}
 .tab.on{background:#EF4122;color:#fff;box-shadow:0 2px 8px rgba(239,65,34,.35)} .tab.on .n{background:#fff;color:#EF4122}
 .panel{display:none}.panel.on{display:block}
-#p2 .wrap{max-width:1000px;margin:24px auto 40px;padding:0 20px}
+#p2 .wrap{max-width:1000px;margin:20px auto 40px;padding:0 20px}
 .hero{background:#fff}.hero .top{display:flex;align-items:center;justify-content:space-between;padding:22px 24px 18px}.hero .top img{height:30px}.hero .top b{font-size:15px;color:#221E1F;letter-spacing:1px}
 .hero .bar{height:4px;background:#EF4122}
-.hero .band{background:#221E1F;padding:24px}.hero .eyebrow{font-size:11px;letter-spacing:3px;color:#5fd0c6;font-weight:700}
-.hero h1{margin:6px 0 0;font-size:26px;color:#fff}.hero .sub{font-size:13px;color:#bdbdbd;margin-top:6px}
-.stats{display:flex;gap:6px;flex-wrap:wrap;margin-top:14px}.stats span{background:#3a3536;color:#fff;border-radius:4px;padding:6px 12px;font-size:13px}.stats b{color:#EF4122}
+.hero .band{background:#221E1F;padding:20px 22px;border-radius:10px;border-top:4px solid #EF4122;color:#fff}.hero .eyebrow{font-size:11px;letter-spacing:3px;color:#5fd0c6;font-weight:700}
+.hero h1{margin:0 0 4px;font-size:24px;color:#fff}.hero .sub{font-size:12px;color:#bdbdbd}
+.stats{display:flex;gap:6px;flex-wrap:wrap;margin-top:12px}.stats span{background:#3a3536;color:#fff;border-radius:4px;padding:5px 10px;font-size:12px}.stats b{color:#EF4122}
 .filters{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:18px 0 14px}.filters .lb{font-size:12px;color:#888;margin-right:2px}
 .fbtn{border:1px solid #d6d6d6;background:#fff;border-radius:16px;padding:5px 13px;font-family:inherit;font-size:13px;cursor:pointer;color:#444}.fbtn.on{background:#0F6E6E;border-color:#0F6E6E;color:#fff}
 .sep{width:1px;height:20px;background:#ddd;margin:0 6px}
@@ -62,7 +63,7 @@
 .bwrap1{max-width:860px;margin:20px auto 40px;padding:0 20px}
 .dhero{background:#221E1F;border-radius:10px;padding:20px 22px;color:#fff;border-top:4px solid #EF4122;position:relative}
 .dhl1{display:flex;gap:20px;align-items:flex-start;justify-content:space-between}@media(max-width:700px){.dhl1{flex-direction:column}}
-.dleft{min-width:0}.dhero .eb{font-size:11px;letter-spacing:3px;color:#EF4122;font-weight:700}.dhero h2{margin:6px 0 4px;font-size:22px}.dhero .sub{font-size:12px;color:#bdbdbd}
+.dleft{min-width:0}.dhero .eb{font-size:11px;letter-spacing:3px;color:#EF4122;font-weight:700}.dhero h2{margin:0 0 4px;font-size:24px}.dhero .sub{font-size:12px;color:#bdbdbd}
 .dstats{display:flex;gap:6px;flex-wrap:wrap;margin-top:12px}.dstats span{background:#3a3536;border-radius:4px;padding:5px 10px;font-size:12px}.dstats b{color:#EF4122}
 .dsearch{position:relative;width:320px;flex:none}@media(max-width:700px){.dsearch{width:100%}}
 .sbox{position:relative}.sbox input{width:100%;height:42px;border:1px solid #4a4546;border-radius:8px;padding:0 70px 0 12px;font-family:inherit;font-size:14px;background:#fff;color:#111}
@@ -114,7 +115,7 @@ mark{background:#ffe08a;color:inherit;padding:0 1px;border-radius:2px}
 <section class="panel on" id="p1"><div class="bwrap1">
   <div class="dhero">
     <div class="dhl1">
-      <div class="dleft"><div class="eb">AG-MACHINERY DAILY BRIEFING</div><h2>농기계 업계 Daily 브리핑</h2><div class="sub" id="dsub"></div><div class="dstats" id="dstats"></div></div>
+      <div class="dleft"><h2>농기계 업계 Daily 브리핑</h2><div class="sub" id="dsub"></div><div class="dstats" id="dstats"></div></div>
       <div class="dsearch">
         <div class="sbox"><input id="q" type="search" placeholder="키워드 검색 (예: 자율주행, Kubota)" autocomplete="off"><button id="qx" class="qx" title="지우기">&times;</button><button id="calbtn" class="calbtn" title="날짜 선택" aria-label="날짜 선택"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4.5" width="18" height="16.5" rx="2"/><path d="M3 9.5h18M8 2.5v4M16 2.5v4"/></svg></button></div>
         <div class="shint">전체 기간 검색 · 띄어쓰기 = AND · 달력 아이콘으로 날짜 선택</div>
@@ -135,10 +136,7 @@ mark{background:#ffe08a;color:inherit;padding:0 1px;border-radius:2px}
 
 <section class="panel" id="p2"><div class="wrap">
   <div class="hero">
-    <div class="top"><img src="https://ko.daedong.co.kr/img/daedong_logo2.png" alt="daedong"><b>커뮤니케이션본부</b></div>
-    <div class="bar"></div>
     <div class="band">
-      <div class="eyebrow">OWNED CHANNEL MONITORING · TYM &amp; LS엠트론</div>
       <h1>경쟁사 콘텐츠 모니터링</h1>
       <div class="sub">2026-10-21 (수) &nbsp;|&nbsp; 공식채널 36개 · 최근 14일 게시물 · 수집 기준 10/21 09:59</div>
       <div class="stats"><span>TYM <b>23</b></span><span>LS엠트론 <b>26</b></span><span>영상 <b>25</b></span><span>신규 <b>3</b></span></div>
