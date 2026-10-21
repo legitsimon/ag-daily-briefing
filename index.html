@@ -15,7 +15,10 @@
 .tabbar .brand{gap:14px}.tabbar .brand img{height:32px}.tabbar .brand span{font-weight:800;font-size:19px;letter-spacing:-0.02em;color:#221E1F;border-left:1px solid #ddd;padding-left:14px;line-height:28px}
 .tab{appearance:none;border:0;font-family:inherit;font-size:15px;font-weight:700;padding:0 18px;height:42px;border-radius:8px;cursor:pointer;background:#0B1F3A;color:rgba(255,255,255,.72);transition:background .15s,color .15s,box-shadow .15s}
 .tab:hover{color:#fff;background:#13294b}
-.tab .n{display:inline-block;margin-left:8px;font-size:12px;background:rgba(255,255,255,.16);color:#fff;border-radius:10px;padding:1px 8px}
+.tab{display:inline-flex;align-items:center;gap:8px}
+.tab .tno{display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:50%;border:1.5px solid rgba(255,255,255,.55);font-size:12px;font-weight:800;line-height:1;color:#fff;flex:none}
+.tab.on .tno{background:#fff;border-color:#fff;color:#EF4122}
+.tab .n{display:inline-block;margin-left:2px;font-size:12px;background:rgba(255,255,255,.16);color:#fff;border-radius:10px;padding:1px 8px}
 .tab.on{background:#EF4122;color:#fff;box-shadow:0 2px 8px rgba(239,65,34,.35)} .tab.on .n{background:#fff;color:#EF4122}
 .panel{display:none}.panel.on{display:block}
 #p2 .wrap{max-width:1000px;margin:20px auto 40px;padding:0 20px}
@@ -108,8 +111,8 @@ mark{background:#ffe08a;color:inherit;padding:0 1px;border-radius:2px}
 <body>
 <div class="tabbar"><div class="in">
   <div class="brand"><img src="https://ko.daedong.co.kr/img/daedong_logo2.png" alt="daedong"><span>커뮤니케이션본부 이슈 모니터링</span></div>
-  <button class="tab on" data-t="p1">1) 농기계 업계 Daily 브리핑<span class="n">15</span></button>
-  <button class="tab" data-t="p2">2) 경쟁사 콘텐츠 모니터링<span class="n">49</span></button>
+  <button class="tab on" data-t="p1"><span class="tno" aria-hidden="true">1</span><span class="tl">농기계 업계 Daily 브리핑</span><span class="n">15</span></button>
+  <button class="tab" data-t="p2"><span class="tno" aria-hidden="true">2</span><span class="tl">경쟁사 콘텐츠 모니터링</span><span class="n">49</span></button>
 </div></div>
 
 <section class="panel on" id="p1"><div class="bwrap1">
