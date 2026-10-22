@@ -20,6 +20,20 @@
 .tab.on .tno{background:#fff;border-color:#fff;color:#EF4122}
 .tab .n{display:inline-block;margin-left:2px;font-size:12px;background:rgba(255,255,255,.16);color:#fff;border-radius:10px;padding:1px 8px}
 .tab.on{background:#EF4122;color:#fff;box-shadow:0 2px 8px rgba(239,65,34,.35)} .tab.on .n{background:#fff;color:#EF4122}
+.tab .ts{display:none}
+/* mobile/tablet only (PC layout untouched): brand on its own row, two tabs split the second row */
+@media(max-width:900px){
+.tabbar .in{height:auto;flex-wrap:wrap;gap:8px;padding:10px 14px 10px}
+.tabbar .brand{width:100%;margin-right:0;gap:10px;min-width:0}
+.tabbar .brand img{height:24px;flex:none}
+.tabbar .brand span{font-size:15px;line-height:20px;padding-left:10px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0}
+.tab{flex:1 1 0;min-width:0;justify-content:center;height:40px;padding:0 10px;font-size:14px;gap:6px;white-space:nowrap}
+.tab .tl{display:none}.tab .ts{display:inline;overflow:hidden;text-overflow:ellipsis;min-width:0}
+.tab .tno{width:20px;height:20px;font-size:11px}
+.tab .n{font-size:11px;padding:1px 6px;margin-left:0}
+}
+@media(min-width:561px) and (max-width:900px){.tab .tl{display:inline}.tab .ts{display:none}.tab{font-size:15px}}
+@media(max-width:360px){.tab{padding:0 6px;font-size:13px;gap:4px}.tab .tno{display:none}}
 .panel{display:none}.panel.on{display:block}
 #p2 .wrap{max-width:1000px;margin:20px auto 40px;padding:0 20px}
 .hero{background:#fff}.hero .top{display:flex;align-items:center;justify-content:space-between;padding:22px 24px 18px}.hero .top img{height:30px}.hero .top b{font-size:15px;color:#221E1F;letter-spacing:1px}
@@ -122,8 +136,8 @@ mark{background:#ffe08a;color:inherit;padding:0 1px;border-radius:2px}
 <body>
 <div class="tabbar"><div class="in">
   <div class="brand"><img src="https://ko.daedong.co.kr/img/daedong_logo2.png" alt="daedong"><span>커뮤니케이션본부 이슈 모니터링</span></div>
-  <button class="tab on" data-t="p1"><span class="tno" aria-hidden="true">1</span><span class="tl">농기계 업계 Daily 브리핑</span><span class="n">15</span></button>
-  <button class="tab" data-t="p2"><span class="tno" aria-hidden="true">2</span><span class="tl">경쟁사 콘텐츠 모니터링</span><span class="n">143</span></button>
+  <button class="tab on" data-t="p1"><span class="tno" aria-hidden="true">1</span><span class="tl">농기계 업계 Daily 브리핑</span><span class="ts">Daily 브리핑</span><span class="n">15</span></button>
+  <button class="tab" data-t="p2"><span class="tno" aria-hidden="true">2</span><span class="tl">경쟁사 콘텐츠 모니터링</span><span class="ts">경쟁사 콘텐츠</span><span class="n">143</span></button>
 </div></div>
 
 <section class="panel on" id="p1"><div class="bwrap1">
